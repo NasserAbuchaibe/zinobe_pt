@@ -1,7 +1,17 @@
 # zinobe
 
 ## Este proyecto se desarrollo en un ambiente virtual utilizando virtualenv con python 3.8.5
-### Para realizar pruebas sugiero utilizar virtualenv y realizar las instalaciones de las librerias necesarias utilizando el archivo requirements.txt
+### Para realizar pruebas sugiero utilizar virtualenv y realizar las instalaciones de las librerias necesarias utilizando el archivo requirements.txt  
+
+### - Para probar app, ingresar al directorio zinobe_pt y ejeutar el comando:
+```
+python3 main.py
+```
+
+###  - Para ejecutar unittest, ingresar al directorio zinobe_pt y ejeutar el comando:
+```
+python -m unittest discover
+```
 
 |  Region | City Name |  Languaje | Time  |
 |---|---|---|---|
