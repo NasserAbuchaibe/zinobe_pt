@@ -1,7 +1,9 @@
-from aux_function.get_region import get_region
+import json
+
 from aux_function.data_countries import data_countries
-from aux_function.to_data_frame import to_data_frame
+from aux_function.get_region import get_region
 from aux_function.save_db import save_db
+from aux_function.to_data_frame import to_data_frame
 
 # Obteniendo lista con las regiones  existentes desde la APi:
 # https://rapidapi.com/apilayernet/api/rest-countries-v1
@@ -19,5 +21,14 @@ print(df)
 print()
 print(df_times)
 
-# db
+# Almacena los DataFrames en sqlite
 save_db(df, df_times)
+
+# Generando un json con las tablas creadas
+json_list = []
+json_list.append(df.to_json())
+json_list.append(df_times.to_json())
+
+# guardando el json en archivo data.json
+with open('data.json', 'w') as file:
+    json.dump(json_list, file)
