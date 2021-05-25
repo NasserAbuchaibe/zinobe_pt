@@ -1,10 +1,11 @@
+""" data_countries """
 import hashlib
 import timeit
 
 import requests
 
 # endpoint informacion paises
-url = "https://restcountries.eu/rest/v2/region/"
+URL = "https://restcountries.eu/rest/v2/region/"
 
 
 def data_countries(region):
@@ -24,21 +25,31 @@ def data_countries(region):
     data_dict = {}
 
     # forma url completa del endpoint a consultar
-    url_region = url + region
+    url_region = URL + region
 
     countrie_data = requests.request("GET", url_region)
-    countrie_data_list = countrie_data.json()
 
-    # filtra data recibida y almacena los datos solicitados en un diccionario
-    data_dict['Region'] = countrie_data_list[0]['region']
-    data_dict['Name'] = countrie_data_list[0]['name']
+    try:
+        countrie_data.raise_for_status()
 
-    # encriptacion con SHA1 de la lengua hablada en el pais
-    encrip = hashlib.sha1(
-        (countrie_data_list[0]['languages'][0]['name']).encode())
-    data_dict['Languaje'] = encrip.hexdigest()
+        countrie_data_list = countrie_data.json()
 
-    # Calculando y almacenando el tiempo de ejecucion
-    data_dict['Time'] = (timeit.timeit() - start)
+        # filtra data recibida y almacena los datos
+        # solicitados en un diccionario
+        data_dict['Region'] = countrie_data_list[0]['region']
+        data_dict['Name'] = countrie_data_list[0]['name']
 
-    return data_dict
+        # encriptacion con SHA1 de la lengua hablada en el pais
+        encrip = hashlib.sha1(
+            (countrie_data_list[0]['languages'][0]['name']).encode())
+        data_dict['Languaje'] = encrip.hexdigest()
+
+        # Calculando y almacenando el tiempo de ejecucion
+        end = timeit.timeit()
+        data_dict['Time'] = (end - start)
+
+        return data_dict
+
+    except requests.exceptions.HTTPError as error_messages:
+
+        print(error_messages)
