@@ -25,6 +25,8 @@ if region_list == []:
     sys.exit("No se encontraron las regiones requeridas")
 
 data_countries_list = [data_countries(region) for region in region_list]
+
+# Filtra None que se hallan podido generar en el momento de consultar un pais
 data_countries_list = list(filter(None, data_countries_list))
 
 # Genera 2 DataFrame df con la data de los paises y
