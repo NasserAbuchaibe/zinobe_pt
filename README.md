@@ -31,7 +31,6 @@ Desarrolle una aplicacion en python que genere la tabla anterior teniendo las si
 5. La tabla debe ser creada en un DataFrame con la libreria PANDAS
 6. Con funciones de la libreria pandas muestre el tiempo total, el tiempo promedio, el tiempo minimo y el maximo que tardo en procesar toda las filas de la tabla.
 7. Guarde el resultado en sqlite.
-8. Genere un Json de la tabla creada y guardelo como data.json
-9. La prueba debe ser entregada en un repositorio git.  
+8. Genere un Json de la tabla creada y guardelo como data.json  
 
 ### Autor: Nasser Abuchaibe
