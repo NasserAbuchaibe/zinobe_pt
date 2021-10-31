@@ -1,4 +1,4 @@
-# zinobe
+# Consumo de API - ejercicios con PANDAS DataFrame
 
 ## En esta rama master se encuentra la primera version funcional sin manejo de errores
 ## En la rama zinobe_v1 esta la nueva version con manejo de errores.
